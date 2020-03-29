@@ -2,7 +2,7 @@ const item = (code, title, audio) => (
   `<div data-keyCode='${code}' class='block'>
       <b>${title}</b>
       <span class='wav'>${audio}</span>
-      <audio data-keycode='${code}' src='audio/${audio}.wav' />
+      <audio data-keycode='${code}' src='audio/${audio}.wav'></audio>
    </div>`
 );
 
