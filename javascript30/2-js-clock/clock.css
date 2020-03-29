@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css?family=Spicy+Rice&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  background-color: rgb(251, 200, 49);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box {
+  background-image: url(bg.jpg);
+  background-position: center;
+  background-size: 250%;
+  background-repeat: no-repeat;
+  width: 350px;
+  height: 500px;
+}
+
+.clock {
+  position: relative;
+  top: 4rem;
+  left: 10rem;
+  width: 11rem;
+  height: 11rem;
+  border: 10px solid rgb(19,27,37);
+  border-radius: 50%;
+  background-color: rgb(216, 98, 60);
+}
+
+.arm {
+  position: absolute;
+  top: 50%;
+  background-color: #ffffff;
+  width: 50%;
+  height: 3px;
+  transform-origin: 100%;
+  transform: rotate(90deg);
+  box-shadow: -1px 1px 1px 0px rgba(0,0,0,0.75);
+}
+
+.hour {
+  background-color: #000000;
+  width: 25%;
+  left: 25%;
+}
+
+.mins {
+  background-color: rgb(8, 77, 146);
+  width: 40%;
+  left: 10%;
+}
+
+.secs {
+  background-color: rgb(251, 200, 49);
+  width: 48%;
+  left: 2%;
+}
+
+.dot {
+  position: absolute;
+  top: 47%;
+  left: 46%;
+  background-color: #ffffff;
+  width: 8%;
+  height: 8%;
+  border: 1px solid rgb(216, 98, 60);
+  border-radius: 50%;
+}
+
+.digital {
+  position: relative;
+  top: 54%;
+  left: 24%;
+  font-family: 'Spicy Rice', cursive;
+  font-size: 28px;
+  color: rgb(216, 98, 60);
+  text-shadow: 1px 1px white;
+}
