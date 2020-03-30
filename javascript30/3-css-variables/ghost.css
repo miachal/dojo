@@ -1,0 +1,204 @@
+:root {
+  --settings: none;
+  --bg-color: #493d8b;
+  --moon-color: #ffff00;
+  --moon-animation-speed: 2s;
+  --ghost-animation: 1.5s;
+  --ghost-color: #ffffff;
+  --ghost-hands-color: #ffffff;
+  --ghost-hands-size: 36px;
+  --ghost-hands-animation: .8s;
+  --ghost-tooth-color: #ffffff;
+  --ghost-eyes-color: #000000;
+  --ghost-eyes-size: 30px;
+  --ghost-mouth-color: #000000;
+  --shadow-color: #000000;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-color);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+.show-settings {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #ffffff;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 20px;
+  z-index: 2;
+}
+
+.settings {
+  display: var(--settings);
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 20px;
+  width: 60%;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bolder;
+  z-index: 1;
+  padding: 20px 5%;
+}
+
+.settings div:not(:first-child) {
+  margin-top: 15px;
+}
+
+.settings div:hover {
+    color: #ff0000;
+    transform: scale(1.1);
+}
+
+.settings div > * {
+  float: right;
+  width: 20%;
+}
+
+.container {
+  width: 500px;
+  height: 500px;
+  padding: 0;
+}
+
+.moon {
+  top: 180px;
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  border-left: 35px solid var(--moon-color);
+  border-radius: 100%;
+  animation: moon var(--moon-animation-speed) infinite;
+}
+
+@keyframes moon {
+  0%, 100% { transform: rotate(-20deg); }
+  50% { transform: rotate(20deg); }
+}
+
+.ghost {
+  margin: 10% auto;
+  width: 80%;
+  height: 80%;
+  animation: floaty var(--ghost-animation) infinite;
+}
+
+.ghost .body {
+  position: relative;
+  margin: 50% auto 0;
+  width: 180px;
+  height: 220px;
+  background: var(--ghost-color);
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+}
+
+.ghost .body:after,
+.ghost .body:before {
+  content: '';
+  position: absolute;
+  top: 130px;
+  background-color: var(--ghost-hands-color);
+  width: var(--ghost-hands-size);
+  height: var(--ghost-hands-size);
+  border-radius: 50%;
+  display: inline-block;
+  animation: floaty var(--ghost-hands-animation) infinite;
+}
+
+.ghost .body:before {
+  left: -18px;
+}
+
+.ghost .body:after {
+  right: -18px;
+}
+
+.ghost .body .eyes {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 90px 0 0;
+  width: 90px;
+  height: 20px;
+}
+
+.ghost .body .eyes:before,
+.ghost .body .eyes:after {
+  content: '';
+  display: block;
+  width: var(--ghost-eyes-size);
+  height: var(--ghost-eyes-size);
+  background-color: var(--ghost-eyes-color);
+  border-radius: 50%;
+}
+
+.ghost .body .mouth {
+  background-color: var(--ghost-mouth-color);
+  margin: 40px auto 0;
+  width: 60px;
+  height: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.ghost .body .mouth:before {
+  content: '';
+  display: block;
+  background: var(--ghost-tooth-color);
+  margin-left: 15px;
+  width: 10px;
+  height: 10px;
+}
+
+.ghost .body .feet {
+  position: absolute;
+  display: flex;
+  bottom: -18px;
+  width: 180px;
+  height: 36px;
+}
+
+.ghost .body .feet > *,
+.ghost .body .feet:before,
+.ghost .body .feet:after {
+  content: '';
+  width: 36px;
+  height: 36px;
+  background-color: var(--ghost-color);
+  border-radius: 50%;
+}
+
+.shadow {
+  margin: -200px auto 0;
+  background-color: var(--shadow-color);
+  width: 180px;
+  height: 40px;
+  border-radius: 50%;
+  animation: zoomy var(--ghost-animation) infinite;
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes zoomy {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(0.8); }
+}
