@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>js30: key sequence detection</title>
+    <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+</head>
+
+<body>
+    <script>
+        const secret = 'secret';
+        const pressed = [];
+
+        window.addEventListener('keyup', (e) => {
+            pressed.push(e.key);
+            pressed.splice(-secret.length - 1, pressed.length - secret.length);
+
+            if (pressed.join('') === secret) {
+                console.log('bam!');
+                cornify_add();
+            }
+
+        });
+    </script>
+</body>
+
+</html>

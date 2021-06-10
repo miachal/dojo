@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>js30: css-variables</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower">
+</head>
+
+</html>
+
+<body>
+    <header>
+        Update CSS Variables with
+        <span class="js">JS</span>
+    </header>
+
+    <div class="container">
+        <div class="options">
+            <div class="oil">
+                <label for="background">background</label>
+                <input type="color" name="background" value="#193549">
+            </div>
+
+            <div class="oil">
+                <label>img-width:</label>
+                <input type="range" name="img-width" value="60" min="10" max="100" data-sizing="%">
+            </div>
+
+            <div class="oil">
+                <label>img-height:</label>
+                <input type="range" name="img-height" value="85" min="10" max="100" data-sizing="%">
+            </div>
+
+            <div class="oil">
+                <label>blur:</label>
+                <input type="range" name="blur" min="0" max="100" value="0" data-sizing="px">
+            </div>
+
+            <div class="oil">
+                <label>border color:</label>
+                <input type="color" name="border-color" value="#cccc00">
+            </div>
+
+            <div class="oil">
+                <label>border type:</label>
+                <select name="border-type">
+                    <option value="solid">solid</option>
+                    <option value="dashed">dashed</option>
+                    <option value="dotted">dotted</option>
+                    <option value="double">double</option>
+                    <option value="groove" selected>groove</option>
+                    <option value="ridge">ridge</option>
+                    <option value="inset">inset</option>
+                    <option value="outset">outset</option>
+                    <option value="none">none</option>
+                    <option value="hidden">hidden</option>
+                </select>
+            </div>
+
+            <div class="oil">
+                <label>border size:</label>
+                <input type="range" name="border-size" value="25" min="0" max="100" data-sizing="px">
+            </div>
+
+            <div class="oil">
+                <label>border radius:</label>
+                <input type="range" name="border-radius" value="35" min="0" max="50" data-sizing="%">
+            </div>
+
+        </div>
+
+        <div class="image">
+            <img src="https://source.unsplash.com/random">
+        </div>
+    </div>
+
+    <script>
+        const inputs = document.querySelectorAll('.options input');
+
+        function handleUpdate() {
+            const suffix = this.dataset.sizing || '';
+            document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+        }
+
+        inputs.forEach(input => input.addEventListener('change', handleUpdate));
+        inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+
+        const selects = document.querySelectorAll('.options select');
+
+        selects.forEach(select => select.addEventListener('change', handleUpdate));
+    </script>
+</body>
+
+</html>

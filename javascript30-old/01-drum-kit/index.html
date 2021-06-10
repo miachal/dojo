@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>js-drum-kit</title>
+    <link href="https://fonts.googleapis.com/css?family=Bellefair" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="keyboard">
+        <div class="key" data-key="65">
+            <kbd>A</kbd>
+            <span class="info">boom</span>
+        </div>
+        <div class="key" data-key="83">
+            <kbd>S</kbd>
+            <span class="info">kick</span>
+        </div>
+        <div class="key" data-key="68">
+            <kbd>D</kbd>
+            <span class="info">ride</span>
+        </div>
+        <div class="key" data-key="70">
+            <kbd>F</kbd>
+            <span class="info">tom</span>
+        </div>
+    </div>
+
+<audio data-key="65" src="static/sounds/boom.wav"></audio>
+<audio data-key="83" src="static/sounds/kick.wav"></audio>
+<audio data-key="68" src="static/sounds/ride.wav"></audio>
+<audio data-key="70" src="static/sounds/tom.wav"></audio>
+
+<script>
+    window.addEventListener('keydown', function(e) {
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+        
+        if (!audio)
+            return;
+
+        key.classList.add('pressed');
+        audio.currentTime = 0;
+        audio.play();
+    });
+
+    const keys = Array.from(document.querySelectorAll('.key'));
+    keys.forEach(key => key.addEventListener('transitionend', function(e) {
+        if (e.propertyName !== 'transform') 
+            return;
+        e.target.classList.remove('pressed');
+    }));
+</script>
+
+</body>
+
+</html>

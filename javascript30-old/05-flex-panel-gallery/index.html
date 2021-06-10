@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>js30: flex-panel-gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
+</head>
+
+<body>
+    <div class="panels">
+        <div class="panel panel1">
+            <p>If you</p>
+            <p>dream it</p>
+            <p>you can do it</p>
+        </div>
+        <div class="panel panel2">
+            <p>never, never,</p>
+            <p>never</p>
+            <p>give up</p>
+        </div>
+        <div class="panel panel3">
+            <p>I can,</p>
+            <p>therefore</p>
+            <p>I am</p>
+        </div>
+        <div class="panel panel4">
+            <p>Hope is a</p>
+            <p>waking</p>
+            <p>dream</p>
+        </div>
+        <div class="panel panel5">
+            <p>Everything you</p>
+            <p>can</p>
+            <p>imagine is real.</p>
+        </div>
+    </div>
+
+    <script>
+        const panels = document.querySelectorAll('.panel');
+
+        function closeAllWithout(active) {
+            panels.forEach(panel => {
+                if (panel !== active)
+                    panel.classList.remove('open')
+            });
+        }
+
+        function toggleOpen() {
+            closeAllWithout(this);
+            this.classList.toggle('open');
+        }
+
+        function toggleActive(e) {
+            if (e.propertyName.includes('flex'))
+                this.classList.toggle('open-active');
+        }
+
+        panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+        panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+    </script>
+</body>
+
+</html>

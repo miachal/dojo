@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>js30: dev tools domination</title>
+</head>
+
+<body>
+
+    <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+    <script>
+        const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+        function makeGreen() {
+            const p = document.querySelector('p');
+            p.style.color = '#BADA55';
+            p.style.fontSize = '50px';
+        }
+
+        // Regular
+        console.log('regular console.log');
+
+        // Interpolated
+        console.log('This message is %s. :-)', 'interpolated');
+
+        // Styled
+        console.log('You should have %c good style!', 'font-size: 16px; background: lime;');
+
+        // warning!
+        console.warn('Warning!');
+        console.warn('%c WARNING', 'font-size: 16px');
+
+        // Error :|
+        console.error('Error!');
+
+        // Info
+        console.info('This is some information.');
+
+        // Testing
+        console.assert(1 === 2, 'Nope. You are wrong');
+        console.assert(1 === 1, 'True, so you will not see this.');
+
+        // clearing
+        console.clear();
+
+        // Viewing DOM Elements
+        const p = document.querySelector('p');
+
+        console.log(p);
+        console.dir(p);
+
+        console.clear(0);
+
+        // Grouping together
+        dogs.forEach(dog => {
+            console.groupCollapsed(dog.name);
+            console.log(`This is ${dog.name}`);
+            console.log(`${dog.name} has ${dog.age} years old`);
+            console.log(`${dog.name} has ${dog.age * 7} dog years old`);
+            console.groupEnd(dog.name);
+        })
+
+        // counting
+        console.count('one');
+        console.count('two');
+        console.count('two');
+        console.count('one');
+        console.count('one');
+        console.count('one');
+        console.count('one');
+        console.count('two');
+        console.count('one');
+        console.count('one');
+        console.count('two');
+        console.count('one');
+        console.count('two');
+        console.count('two');
+
+        // timing
+        const tab = [];
+        console.time('simple for');
+        for (let j = 0; j <= 10000000; j++) {
+            tab.push(j * j * j);
+        }
+        console.timeEnd('simple for');
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>css-clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="clock">
+        <div class="clock-shield">
+            <div class="cursor hour-cursor"></div>
+            <div class="cursor min-cursor"></div>
+            <div class="cursor sec-cursor"></div>
+            <div class="little-dot"></div>
+        </div>
+    </div>
+
+    <script>
+
+        const secondCursor = document.querySelector('.sec-cursor');
+        const minuteCursor = document.querySelector('.min-cursor');
+        const hourCursor = document.querySelector('.hour-cursor');
+
+        function setDate() {
+            const now = new Date();
+
+            const seconds = now.getSeconds();
+            const secondsDeg = ((seconds / 60) * 360 + 90);
+            secondCursor.style.transform = `rotate(${secondsDeg}deg)`;
+
+            const minutes = now.getMinutes();
+            const minutesDeg = ((minutes / 60) * 360 + 90);
+            minuteCursor.style.transform = `rotate(${minutesDeg}deg)`;
+
+            const hours = now.getHours();
+            const hoursDeg = ((hours / 12) * 360 + 90);
+            hourCursor.style.transform = `rotate(${hoursDeg}deg)`;
+
+            console.log('Time: ' + hours + ':' + minutes + ':' + seconds);
+        }
+
+        setInterval(setDate, 1000);
+
+    </script>
+
+</body>
+
+</html>

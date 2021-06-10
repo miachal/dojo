@@ -1,0 +1,77 @@
+:root {
+    --background: #193549;
+    --img-width: 60%;
+    --img-height: 85%;
+    --blur: 0px;
+    --border-color: #cccc00;
+    --border-type: groove;
+    --border-size: 25px;
+    --border-radius: 35%;
+  }
+  
+  body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background: var(--background);
+    color: #ffffff;
+    font-family: 'Indie Flower', cursive;;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  header {
+    flex: 0.1;
+    text-align: center;
+    font-size: 56px;
+  }
+  
+  header .js {
+    color: var(--border-color);
+    font-weight: bold;
+  }
+  
+  .container {
+    flex: 0.9;
+    display: flex;
+  }
+  
+  .options {
+    display: flex;
+    flex-direction: column;
+    flex: 0.2;
+    
+    padding: 30px;
+    font-size: 22px;
+  }
+  
+  .oil {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .oil input,
+  .oil select {
+    width: 50%;
+  }
+  
+  .image {
+    padding: 20px;
+    flex: 0.8;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .image img {
+    border: var(--border-size) var(--border-type) var(--border-color);
+    border-radius: var(--border-radius);
+    filter: blur(var(--blur));
+    
+    width: var(--img-width);
+    height: var(--img-height);
+  }
